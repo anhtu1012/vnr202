@@ -11,6 +11,7 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 import Squares from "../../components/Squares";
+import { LeaderboardEntryServices } from "../../services/api";
 
 interface Question {
   id: number;
@@ -191,14 +192,27 @@ function Game() {
   const [timeTaken, setTimeTaken] = useState(0);
 
   useEffect(() => {
-    // Load leaderboard from localStorage
-    const savedLeaderboard = localStorage.getItem("gameLeaderboard");
-    if (savedLeaderboard) {
-      setLeaderboard(JSON.parse(savedLeaderboard));
-    }
+    // Load leaderboard from API
+    const fetchLeaderboard = async () => {
+      try {
+        const res = await LeaderboardEntryServices.getLeaderboardEntries();
+        if (res && res.data) {
+          const entries = Array.isArray(res.data) ? res.data : [];
+          entries.sort((a: LeaderboardEntry, b: LeaderboardEntry) => {
+            if (b.score !== a.score) return b.score - a.score;
+            return a.time - b.time;
+          });
+          setLeaderboard(entries.slice(0, 10));
+        }
+      } catch (err) {
+        console.error("Failed to load leaderboard from API", err);
+      }
+    };
+
+    fetchLeaderboard();
   }, []);
 
-  const saveToLeaderboard = (
+  const saveToLeaderboard = async (
     name: string,
     finalScore: number,
     time: number
@@ -210,15 +224,31 @@ function Game() {
       time,
     };
 
-    const updatedLeaderboard = [...leaderboard, newEntry]
-      .sort((a, b) => {
-        if (b.score !== a.score) return b.score - a.score;
-        return a.time - b.time; // If same score, sort by time
-      })
-      .slice(0, 10); // Keep top 10
+    try {
+      // Try to save to backend
+      await LeaderboardEntryServices.createLeaderboardEntry(newEntry);
 
-    setLeaderboard(updatedLeaderboard);
-    localStorage.setItem("gameLeaderboard", JSON.stringify(updatedLeaderboard));
+      // Re-fetch the leaderboard from backend to keep it authoritative
+      const res = await LeaderboardEntryServices.getLeaderboardEntries();
+      if (res && res.data) {
+        const entries = Array.isArray(res.data) ? res.data : [];
+        entries.sort((a: LeaderboardEntry, b: LeaderboardEntry) => {
+          if (b.score !== a.score) return b.score - a.score;
+          return a.time - b.time;
+        });
+        setLeaderboard(entries.slice(0, 10));
+      }
+    } catch (err) {
+      console.error("Failed to save leaderboard entry to API", err);
+      // Fallback: update local state only (no localStorage usage as requested)
+      const updatedLeaderboard = [...leaderboard, newEntry]
+        .sort((a, b) => {
+          if (b.score !== a.score) return b.score - a.score;
+          return a.time - b.time;
+        })
+        .slice(0, 10);
+      setLeaderboard(updatedLeaderboard);
+    }
   };
 
   const startGame = () => {
@@ -363,6 +393,7 @@ function Game() {
               className="start-button"
               onClick={startGame}
               disabled={!playerName.trim()}
+              style={{ marginRight: "10px" }}
             >
               <span>Bắt đầu Sứ Mệnh!</span>
               <FaArrowRight />
