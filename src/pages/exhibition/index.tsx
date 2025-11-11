@@ -18,31 +18,31 @@ export default function Exhibition() {
   const ethnicImages = [
     {
       image: "/img/b1.jpg",
-      text: "Nghệ thuật khèn",
+      text: "",
     },
     {
       image: "/img/b2.jpg",
-      text: "Đàn Đáy Việt Nam",
+      text: "",
     },
     {
       image: "/img/b3.jpg",
-      text: "Đàn Tỳ Bà Việt Nam",
+      text: "",
     },
     {
       image: "/img/b4.jpg",
-      text: "Đàn Nguyệt Việt Nam",
+      text: "",
     },
     {
       image: "/img/b6.jpg",
-      text: "Đàn Bầu Việt Nam",
+      text: "",
     },
     {
       image: "/img/b7.jpg",
-      text: "Đàn T'rưng Việt Nam",
+      text: "",
     },
     {
       image: "/img/b8.jpg",
-      text: "Đàn Nhị Việt Nam",
+      text: "",
     },
   ];
 
@@ -62,7 +62,9 @@ export default function Exhibition() {
           <span>Trang Chủ</span>
         </button>
 
-        <h1 className="exhibition-title">Phòng Triển Lãm Công nghệ 3D</h1>
+        <h1 className="exhibition-title">
+          Phòng Triển Lãm Ảnh Công nghệ 3D AI
+        </h1>
 
         <div className="mode-toggle">
           <button

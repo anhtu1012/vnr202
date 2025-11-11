@@ -56,6 +56,43 @@ const DEFAULT_IMAGES: ImageItem[] = [
     src: "https://vdigital.vn/wp-content/uploads/2022/10/chuyen-doi-so-1-1.png",
     alt: "Hình ảnh lưu niệm Nguyễn Ái Quốc và những người bạn Pháp tại Paris vào năm 1921",
   },
+  ///==============================================
+  {
+    src: "https://i.pinimg.com/1200x/c6/72/43/c67243a0af267b0ab918ba7834f28a53.jpg",
+    alt: "Hình ảnh lưu niệm Nguyễn Ái Quốc và những người bạn Pháp tại Paris vào năm 1921",
+  },
+  {
+    src: "https://i.pinimg.com/1200x/e6/7c/2d/e67c2d4aef707306d987d8920988b0a3.jpg",
+    alt: "Nguyễn Ái Quốc với nhân dân Moskva (Nga) trên đồi Chim Sẻ, trong thời gian tham dự Đại hội lần thứ V Quốc tế cộng sản (17-6/8-7-1924). Ảnh: Tư liệu/TTXVN",
+  },
+  {
+    src: "https://i.pinimg.com/1200x/ed/af/1c/edaf1c6df0453ab2a70678554adc675c.jpg",
+    alt: "Bác Hồ (Thầu Chín) và các đồng chí tại Thái Lan năm 1928. Thầu Chín là bí danh của lãnh tụ Nguyễn Ái Quốc hoạt động ở Xiêm, nay là Vương quốc Thái Lan, trong thời gian 1928-1929. Thầu là tiếng Thái-Lào, để gọi người nhiều tuổi và biểu thị sự tôn kính. Ảnh: Tư liệu/TTXVN ",
+  },
+  {
+    src: "https://i.pinimg.com/736x/1d/da/30/1dda30227d711b81bde28aee70dd0f21.jpg",
+    alt: "Hình ảnh trong chuyến hành trình tìm đường cứu nước của Bác từ ngày 25 đến 30-12-1920, chàng thanh niên yêu nước Nguyễn Ái Quốc (tên của Chủ tịch Hồ Chí Minh trong thời gian hoạt động cách mạng ở Pháp) tham dự Đại hội lần thứ 18 Đảng Xã hội Pháp ở thành phố Tours với tư cách đại biểu Đông Dương",
+  },
+  {
+    src: "https://i.pinimg.com/736x/a7/81/f9/a781f939dbb5febebd85e3e1180d6013.jpg",
+    alt: "Hình ảnh lưu niệm Nguyễn Ái Quốc và những người bạn Pháp tại Paris vào năm 1921",
+  },
+  {
+    src: "https://i.pinimg.com/736x/d0/c1/8f/d0c18ff4867fa326b72826d33de2f721.jpg",
+    alt: "Hình ảnh lưu niệm Nguyễn Ái Quốc và những người bạn Pháp tại Paris vào năm 1921",
+  },
+  {
+    src: "https://i.pinimg.com/1200x/32/6e/b6/326eb6302b601e7d2afac4955bf20e19.jpg",
+    alt: "Nguyễn Ái Quốc với nhân dân Moskva (Nga) trên đồi Chim Sẻ, trong thời gian tham dự Đại hội lần thứ V Quốc tế cộng sản (17-6/8-7-1924). Ảnh: Tư liệu/TTXVN",
+  },
+  {
+    src: "https://i.pinimg.com/1200x/67/df/a4/67dfa45b32ce1553d8784a0407f6d495.jpg",
+    alt: "Bác Hồ (Thầu Chín) và các đồng chí tại Thái Lan năm 1928. Thầu Chín là bí danh của lãnh tụ Nguyễn Ái Quốc hoạt động ở Xiêm, nay là Vương quốc Thái Lan, trong thời gian 1928-1929. Thầu là tiếng Thái-Lào, để gọi người nhiều tuổi và biểu thị sự tôn kính. Ảnh: Tư liệu/TTXVN ",
+  },
+  {
+    src: "https://i.pinimg.com/736x/52/9f/17/529f17501859a7b8f07363968022b397.jpg",
+    alt: "Hình ảnh trong chuyến hành trình tìm đường cứu nước của Bác từ ngày 25 đến 30-12-1920, chàng thanh niên yêu nước Nguyễn Ái Quốc (tên của Chủ tịch Hồ Chí Minh trong thời gian hoạt động cách mạng ở Pháp) tham dự Đại hội lần thứ 18 Đảng Xã hội Pháp ở thành phố Tours với tư cách đại biểu Đông Dương",
+  },
 ];
 
 const DEFAULTS = {
