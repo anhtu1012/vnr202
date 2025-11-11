@@ -6,8 +6,13 @@ import {
   UserOutlined,
   ExpandOutlined,
 } from "@ant-design/icons";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+import rehypeRaw from "rehype-raw";
 import { sendMessageToGemini } from "../../services/geminiService";
 import "./ChatAI.scss";
+import "highlight.js/styles/atom-one-dark.css";
 
 interface Message {
   id: string;
@@ -78,6 +83,8 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
 
       setMessages((prev) => [...prev, aiMessage]);
     } catch (error) {
+      // Log error for debugging
+      console.error(error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
         text: "Xin lỗi, đã có lỗi xảy ra. Vui lòng thử lại sau.",
@@ -137,7 +144,80 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
               {message.sender === "user" ? <UserOutlined /> : <RobotOutlined />}
             </div>
             <div className="message-content">
-              <div className="message-bubble">{message.text}</div>
+              <div className="message-bubble">
+                {message.sender === "ai" ? (
+                  <ReactMarkdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeHighlight, rehypeRaw]}
+                    components={{
+                      p: ({ children }) => (
+                        <p className="markdown-p">{children}</p>
+                      ),
+                      h1: ({ children }) => (
+                        <h1 className="markdown-h1">{children}</h1>
+                      ),
+                      h2: ({ children }) => (
+                        <h2 className="markdown-h2">{children}</h2>
+                      ),
+                      h3: ({ children }) => (
+                        <h3 className="markdown-h3">{children}</h3>
+                      ),
+                      ul: ({ children }) => (
+                        <ul className="markdown-ul">{children}</ul>
+                      ),
+                      ol: ({ children }) => (
+                        <ol className="markdown-ol">{children}</ol>
+                      ),
+                      li: ({ children }) => (
+                        <li className="markdown-li">{children}</li>
+                      ),
+                      code: ({ className, children, ...props }) => {
+                        const match = /language-(\w+)/.exec(className || "");
+                        return match ? (
+                          <code
+                            className={`${className} markdown-code-block`}
+                            {...props}
+                          >
+                            {children}
+                          </code>
+                        ) : (
+                          <code className="markdown-code-inline" {...props}>
+                            {children}
+                          </code>
+                        );
+                      },
+                      pre: ({ children }) => (
+                        <pre className="markdown-pre">{children}</pre>
+                      ),
+                      blockquote: ({ children }) => (
+                        <blockquote className="markdown-blockquote">
+                          {children}
+                        </blockquote>
+                      ),
+                      a: ({ children, href }) => (
+                        <a
+                          href={href}
+                          className="markdown-link"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {children}
+                        </a>
+                      ),
+                      strong: ({ children }) => (
+                        <strong className="markdown-strong">{children}</strong>
+                      ),
+                      em: ({ children }) => (
+                        <em className="markdown-em">{children}</em>
+                      ),
+                    }}
+                  >
+                    {message.text}
+                  </ReactMarkdown>
+                ) : (
+                  <p>{message.text}</p>
+                )}
+              </div>
               <div className="message-time">
                 {message.timestamp.toLocaleTimeString("vi-VN", {
                   hour: "2-digit",

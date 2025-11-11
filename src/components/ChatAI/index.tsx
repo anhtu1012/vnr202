@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import ChatButton from './ChatButton';
-import ChatInterface from './ChatInterface';
+import React, { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import ChatButton from "./ChatButton";
+import ChatInterface from "./ChatInterface";
 
 const ChatAI: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,19 +13,20 @@ const ChatAI: React.FC = () => {
   };
 
   const openFullPage = () => {
-    navigate('/chatai');
+    navigate("/chatai");
   };
 
   // Không hiển thị nút chat trên trang ChatAI
-  if (location.pathname === '/chatai') {
+  // Không hiển thị nút chat trên trang ChatAI và trang Game
+  if (location.pathname === "/chatai" || location.pathname === "/game") {
     return null;
   }
 
   return (
     <>
-      <ChatButton 
-        isOpen={isOpen} 
-        onClick={toggleChat} 
+      <ChatButton
+        isOpen={isOpen}
+        onClick={toggleChat}
         onDoubleClick={openFullPage}
       />
       <ChatInterface isOpen={isOpen} onOpenFullPage={openFullPage} />
@@ -34,4 +35,3 @@ const ChatAI: React.FC = () => {
 };
 
 export default ChatAI;
-
