@@ -158,19 +158,32 @@ const questions: Question[] = [
   },
   {
     id: 10,
-    question:
-      "Ý nghĩa của việc đẩy mạnh CNH, HĐH gắn với KTTT trong giai đoạn hiện nay là:",
+    question: "Bạn có thấy nhóm 3 tuyệt đỉnh tuyệt vời không?",
     options: [
-      "Là con đường tất yếu để phát triển nhanh, bền vững, nâng cao vị thế quốc gia trong khu vực",
-      "Giúp Việt Nam trở thành quốc gia phát triển theo mô hình công nghiệp hóa truyền thống",
-      "Tạo thêm việc làm giản đơn cho người lao động",
-      "Làm chậm quá trình hội nhập để bảo vệ sản xuất trong nước",
+      "Cóa thấy chứ!",
+      "Tuyệt đỉnh!",
+      "Đỉnh cao của đỉnh cao!",
+      "Hơi hơi thôi!",
     ],
-    correctAnswer: 0,
-    explanation:
-      "Đây là con đường tất yếu để Việt Nam phát triển nhanh và bền vững.",
+    correctAnswer: 2,
+    explanation: "Nhóm 3 thật tuyệt đỉnh!",
     building: "Thành phố Thông minh",
   },
+  //  {
+  //   id: 10,
+  //   question:
+  //     "Ý nghĩa của việc đẩy mạnh CNH, HĐH gắn với KTTT trong giai đoạn hiện nay là:",
+  //   options: [
+  //     "Là con đường tất yếu để phát triển nhanh, bền vững, nâng cao vị thế quốc gia trong khu vực",
+  //     "Giúp Việt Nam trở thành quốc gia phát triển theo mô hình công nghiệp hóa truyền thống",
+  //     "Tạo thêm việc làm giản đơn cho người lao động",
+  //     "Làm chậm quá trình hội nhập để bảo vệ sản xuất trong nước",
+  //   ],
+  //   correctAnswer: 0,
+  //   explanation:
+  //     "Đây là con đường tất yếu để Việt Nam phát triển nhanh và bền vững.",
+  //   building: "Thành phố Thông minh",
+  // },
 ];
 
 type GameState = "start" | "playing" | "video" | "end" | "leaderboard";
